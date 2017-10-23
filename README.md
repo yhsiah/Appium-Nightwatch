@@ -16,20 +16,31 @@ Note that this is only currently working for web testing on chrome for mac / win
 
 After installing the above:
 
-  yarn
+    yarn
 
-from the the home directory.
+This will install all dependencies.
 
-Next, run appium-doctor to check that your Appium is set up correctly for ios.
+Then, run the nightwatch config file to grab the latest selenium server:
 
-  ./node_modules/.bin/appium-doctor --ios
+    node nightwatch.conf.js
 
-Once this is done, you can run tests on chrome, using selenium:
+### Setting up Appium for ios
 
-  ./node_modules/.bin/nightwatch
+Run appium-doctor to check that your Appium is set up correctly for ios.
 
-This will run all tests - which are currently two example tests (one is designed to pass, the other is designed to fail)
+    ./node_modules/.bin/appium-doctor --ios
 
-To run the same tests on ios:
+Follow instructions from this.
 
-  ./node_modules/.bin/nightwatch --env ios
+## Running tests
+
+Once this is done, you can run tests on chrome for desktop using selenium:
+
+    ./node_modules/.bin/nightwatch
+
+
+To run the same tests on safari for ios, on simulator:
+
+    ./node_modules/.bin/nightwatch --env ios
+
+Note that there are two example tests, one is designed to fail and one is designed to pass.
