@@ -1,11 +1,12 @@
 {
   "devDependencies": {
+    "appium": "^1.7.1",
+    "appium-doctor": "^1.4.3",
+    "ios-deploy": "^1.9.2",
     "nightwatch": "^0.9.16",
     "selenium-download": "^2.0.10"
   },
-
   "scripts": {
     "postinstall": "node nightwatch.conf.js"
   }
-
 }

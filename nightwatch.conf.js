@@ -1,6 +1,8 @@
 // require('env2')('.env'); // optionally store your Evironment Variables in .env
 const SCREENSHOT_PATH = "./screenshots/";
 const BINPATH = './node_modules/nightwatch/bin/';
+// APP_PATH needs to be relative to the appium server install directory
+const APP_PATH = '../../app/';
 
 // we use a nightwatch.conf.js file so we can include comments and helper functions
 module.exports = {
@@ -10,7 +12,7 @@ module.exports = {
   "output_folder": "./reports", // reports (test outcome) output by nightwatch
   "selenium": { // downloaded by selenium-download module (see readme)
     "start_process": true, // tells nightwatch to start/stop the selenium process
-    "server_path": "./node_modules/nightwatch/bin/selenium.jar",
+    "server_path": BINPATH + "selenium.jar",
     "host": "127.0.0.1",
     "port": 4444, // standard selenium port
     "cli_args": { // chromedriver is downloaded by selenium-download (see readme)
@@ -34,6 +36,19 @@ module.exports = {
       "desiredCapabilities": {
         "browserName": "chrome",
         "javascriptEnabled": true // turn off to test progressive enhancement
+      }
+    },
+    "ios" : {
+      "selenium_start_process": false,
+      "selenium_port" : 4723,
+      "selenium_host" : "127.0.0.1",
+      "silent": true,
+      "desiredCapabilities" : {
+        "browserName" : "Safari",
+        "platformName" : "iOS",
+        "platformVersion" : "11.0",
+        "deviceName" : "iPad Air 2",
+        // "app": APP_PATH + "ios/PieDrive.app", // path for the ios app you want to test
       }
     }
   }
